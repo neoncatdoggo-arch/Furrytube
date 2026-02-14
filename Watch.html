@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch - FurryTube</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">🐾 FurryTube</a>
+</header>
+
+<main>
+  <div class="watch-container">
+    <video id="videoPlayer" controls width="800"></video>
+    <h2 id="videoTitle"></h2>
+  </div>
+</main>
+
+<!-- Firebase + your JS -->
+<script type="module" src="firebase.js"></script>
+<script type="module">
+  // Grab video info from URL
+  const params = new URLSearchParams(window.location.search);
+  const url = params.get("url");
+  const title = params.get("title");
+
+  const player = document.getElementById("videoPlayer");
+  const videoTitle = document.getElementById("videoTitle");
+
+  if(url && title){
+    player.src = url;
+    videoTitle.textContent = title;
+  } else {
+    videoTitle.textContent = "Video not found";
+  }
+</script>
+
+</body>
+</html>
