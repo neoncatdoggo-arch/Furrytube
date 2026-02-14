@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FurryTube</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header with logo and search -->
+<header>
+  <h1 class="logo">🐾 FurryTube</h1>
+  <input type="text" id="search" placeholder="Search videos..." onkeyup="searchVideos()">
+</header>
+
+<!-- Video Grid -->
+<main>
+  <div class="video-grid" id="videoGrid">
+    
+    <div class="video-card" data-title="Cute Cat Compilation">
+      <a href="watch.html?video=cat">
+        <img src="https://placehold.co/300x170" alt="Cute Cat Compilation" class="thumbnail">
+        <h3>Cute Cat Compilation</h3>
+      </a>
+    </div>
+
+    <div class="video-card" data-title="Dog Zoomies 4K">
+      <a href="watch.html?video=dog">
+        <img src="https://placehold.co/300x170" alt="Dog Zoomies 4K" class="thumbnail">
+        <h3>Dog Zoomies 4K</h3>
+      </a>
+    </div>
+
+    <div class="video-card" data-title="Furry Animation Meme">
+      <a href="watch.html?video=meme">
+        <img src="https://placehold.co/300x170" alt="Furry Animation Meme" class="thumbnail">
+        <h3>Furry Animation Meme</h3>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- JS -->
+<script src="script.js"></script>
+</body>
+</html>
