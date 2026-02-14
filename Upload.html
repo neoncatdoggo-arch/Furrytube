@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload - FurryTube</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">🐾 FurryTube</a>
+</header>
+
+<main>
+  <h1>Upload a Video</h1>
+  <input type="file" id="videoFile">
+  <input type="text" id="videoTitle" placeholder="Video Title">
+  <button id="uploadBtn">Upload</button>
+</main>
+
+<!-- Firebase + upload script -->
+<script type="module" src="firebase.js"></script>
+<script type="module">
+  import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-storage.js";
+  import { collection, addDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+  import { storage, db } from './firebase.js';
+
+  const uploadBtn = document.getElementById("uploadBtn");
+
+  uploadBtn.addEventListener("click", async () => {
+    const file = document.getElementById("videoFile").files[0];
+    const title = document.getElementById("videoTitle").value;
+
+    if (!file || !title) {
+      alert("Please select a file and enter a title!");
+      return;
+    }
+
+    try {
+      // Upload to Firebase Storage
+      const storageRef = ref(storage, 'videos/' + file.name);
+      await uploadBytes(storageRef, file);
+
+      // Get the public URL
+      const url = await getDownloadURL(storageRef);
+
+      // Save metadata in Firestore
+      await addDoc(collection(db, "videos"), {
+        title: title,
+        url: url,
+        uploadedAt: new Date()
+      });
+
+      alert("Video uploaded successfully!");
+      document.getElementById("videoFile").value = "";
+      document.getElementById("videoTitle").value = "";
+
+    } catch (error) {
+      console.error(error);
+      alert("Upload failed. Try again!");
+    }
+  });
+</script>
+
+</body>
+</html>
