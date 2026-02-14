@@ -1,0 +1,75 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #111; /* Dark background */
+  color: white;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #ff4da6; /* Neon pink header */
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+#search {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  width: 200px;
+}
+
+/* Video Grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.video-card {
+  background-color: #222; /* Dark card */
+  padding: 10px;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.video-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff4da6;
+}
+
+.thumbnail {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Watch Page */
+.watch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+.watch-container video {
+  border-radius: 10px;
+  background-color: black;
+  margin-bottom: 20px;
+}
+
+.watch-container h2 {
+  font-size: 24px;
+  color: #ff4da6;
+}
